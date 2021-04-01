@@ -24,6 +24,9 @@
     <ClCompile Include="railfence_chipher.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="matrix_chipher.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -33,6 +36,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="railfence_chipher.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix_chipher.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,14 +6,17 @@ int main() {
 		printf_s("\nTo EXIT enter 0\n");
 		printf_s("1. Column Chipher\n");
 		printf_s("2. Rail fence Chiper\n");
-		printf_s("3. Other Chipher\n");
+		printf_s("3. Matrix Chipher\n");
 		printf_s("4. Other Chiper\n");
 		// add chiphers
 
 		unsigned command = 1, unsigned_key;
+		char matrix_key[5][5];
+
 		scanf_s("%d", &command);
 		char mode;
 		char key[MAX_INPUT_SIZE], str[MAX_INPUT_SIZE];
+
 		switch (command)
 		{
 		case EXIT_CODE:
@@ -41,6 +44,24 @@ int main() {
 			gets_s(str, MAX_INPUT_SIZE);
 			if (unsigned_key != 1 && unsigned_key != 0)
 				execute_railfence_chipher(unsigned_key, str, mode);
+			break;
+		case MATRIX_CHIPHER:
+			printf_s("\nSelect mode ('e' - encrypt data; 'd' - decrypt data; 'b' - encrypt and decrypt data): ");
+			getchar();
+			scanf_s("%c", &mode, 1);
+			getchar();
+			printf_s("Key: ");
+			for (unsigned i = 0; i < 5; i++)
+			{
+				for (unsigned j = 0; j < 5; j++)
+				{		
+					scanf("%hhd", &matrix_key[i][j]);	
+				}
+			}
+			getchar();
+			printf_s("Data: ");
+			gets_s(str, MAX_INPUT_SIZE);
+			execute_matrix_chipher(matrix_key, str, mode);
 			break;
 		}
 	}

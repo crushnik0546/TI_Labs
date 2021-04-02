@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cesar_chipher.c" />
     <ClCompile Include="column_chipher.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="matrix_chipher.c" />
     <ClCompile Include="railfence_chipher.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cesar_chipher.h" />
     <ClInclude Include="column_chipher.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="matrix_chipher.h" />

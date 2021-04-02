@@ -7,7 +7,7 @@ int main() {
 		printf_s("1. Column Chipher\n");
 		printf_s("2. Rail fence Chiper\n");
 		printf_s("3. Matrix Chipher\n");
-		printf_s("4. Other Chiper\n");
+		printf_s("4. Cesar Chiper\n");
 		// add chiphers
 
 		unsigned command = 1, unsigned_key;
@@ -62,6 +62,19 @@ int main() {
 			printf_s("Data: ");
 			gets_s(str, MAX_INPUT_SIZE);
 			execute_matrix_chipher(matrix_key, str, mode);
+			break;
+		case CESAR_CHIPHER:
+			printf_s("\nSelect mode ('e' - encrypt data; 'd' - decrypt data; 'b' - encrypt and decrypt data): ");
+			getchar();
+			scanf_s("%c", &mode, 1);
+			getchar();
+			printf_s("Key: ");
+			scanf_s("%d", &unsigned_key);
+			getchar();
+			printf_s("Data: ");
+			gets_s(str, MAX_INPUT_SIZE);
+			if (unsigned_key >= 0)
+				execute_cesar_chipher(unsigned_key, str, mode);
 			break;
 		}
 	}

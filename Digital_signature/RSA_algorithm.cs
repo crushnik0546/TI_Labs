@@ -9,17 +9,9 @@ namespace Digital_signature
 {
     public static class RSA_algorithm
     {
-        public static UInt64 EncryptData(UInt64 Data, Int64 publicKeyFirst, Int64 publicKeySecond)
+        public static BigInteger EncryptData(BigInteger Data, Int64 differentPartOfKey, Int64 samePartOfKey)
         {
-            UInt64 result = (UInt64)BigInteger.ModPow(Data, publicKeyFirst, publicKeySecond);
-            return result;
+            return BigInteger.ModPow(Data, differentPartOfKey, samePartOfKey);
         }
-
-        public static UInt64 DecryptData(UInt64 Data, Int64 secretKeyFirst, Int64 secretKeySecond)
-        {
-            UInt64 result = (UInt64)BigInteger.ModPow(Data, secretKeyFirst, secretKeySecond);
-            return result;
-        }
-
     }
 }

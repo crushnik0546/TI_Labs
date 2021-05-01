@@ -8,43 +8,38 @@ namespace Digital_signature
 {
     class RSA_keys
     {
-        public struct PublicKey
+        public struct Key
         {
-            public Int64 e;
-            public Int64 n;
+            public Int64 differentPart;
+            public Int64 samePart;
         }
 
-        public struct SecretKey
-        {
-            public Int64 d;
-            public Int64 n;
-        }
         private readonly Int64[] fermaNumbers = { 17, 257, 65537 };
-        private PublicKey pKey;
-        private SecretKey sKey;
+        private Key publicKey;
+        private Key secretKey;
         Random rand;
 
         public RSA_keys()
         {
             rand = new Random();
-            pKey = new PublicKey();
-            sKey = new SecretKey();
+            publicKey = new Key();
+            secretKey = new Key();
             GenerateKeys();
         }
 
-        public PublicKey GetPublicKey
+        public Key GetPublicKey
         {
             get
             {
-                return pKey;
+                return publicKey;
             }
         }
 
-        public SecretKey GetSecretKey
+        public Key GetSecretKey
         { 
             get
             {
-                return sKey;
+                return secretKey;
             }
         }
 
@@ -56,22 +51,22 @@ namespace Digital_signature
             Int64 eulerFunction = (p - 1) * (q - 1);
             Int64 e = fermaNumbers[rand.Next(0, 2)];
 
-            pKey.e = e;
-            pKey.n = n;
+            publicKey.differentPart = e;
+            publicKey.samePart = n;
 
-            sKey.d = GenerateSecretKey(e, eulerFunction);
-            if (sKey.d < 0)
+            secretKey.differentPart = GenerateSecretKey(e, eulerFunction);
+            if (secretKey.differentPart < 0)
             {
-                sKey.d = eulerFunction + sKey.d;
+                secretKey.differentPart = eulerFunction + secretKey.differentPart;
             }
 
-            if (sKey.d == 0)
+            if (secretKey.differentPart == 0)
             {
                 GenerateKeys();
             }
             else
             {
-                sKey.n = n;
+                secretKey.samePart = n;
             }
         }
 

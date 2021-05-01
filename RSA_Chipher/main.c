@@ -6,8 +6,8 @@
 #define MAX_DATA_INPUT 2048
 #define TRUE 1
 #define FALSE 0
-#define MIN_RAND 50
-#define MAX_RAND 200
+#define MIN_RAND 10
+#define MAX_RAND 50
 
 typedef long long big_int;
 
@@ -141,9 +141,10 @@ big_int power_mod(big_int code, big_int e, big_int n)
 
 int main()
 {
-	char text[MAX_DATA_INPUT];
+	char text[MAX_DATA_INPUT], data_txt[MAX_DATA_INPUT];
 	gets_s(text, MAX_DATA_INPUT);
 	key public, private;
+	strcpy_s(data_txt, MAX_DATA_INPUT, text);
 	generate_keys(&public, &private);
 	printf_s("\nPublic key: e = %lld, r = %lld", public.dif, public.same);
 	printf_s("\nPrivate key: d = %lld, r = %lld\n", private.dif, private.same);

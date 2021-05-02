@@ -67,6 +67,12 @@ void main()
 	source_file = fopen(file_path, "rb");
 	dest_file = fopen(ecrypted_file_path, "wb");
 
+	if (source_file == NULL)
+	{
+		printf("Error: File doesn't exist!\n");
+		return;
+	}
+
 	encrypt_file(source_file, dest_file, secret_key);
 	printf("\nFile is encrypted! Location is ./%s\n", ecrypted_file_path);
 
@@ -76,6 +82,12 @@ void main()
 	// decryption
 	source_file = fopen(ecrypted_file_path, "rb");
 	dest_file = fopen(decrypted_file_path, "wb");
+
+	if (source_file == NULL)
+	{
+		printf("Error: File doesn't exist!\n");
+		return;
+	}
 
 	encrypt_file(source_file, dest_file, secret_key);
 	printf("\nFile is decrypted! Location is ./%s\n", decrypted_file_path);
